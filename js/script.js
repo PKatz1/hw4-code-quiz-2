@@ -35,7 +35,7 @@ let choice_que = document.querySelectorAll(".choice_que");
 
 
 let index = 0;
-let timer = 0;
+let timer = 30;
 let interval = 0;
 
 //total points
@@ -60,14 +60,15 @@ exit.addEventListener("click", () => {
 //Creates Timer For Quiz Timer Section
 
 let countDown = () => {
-    if (timer === 20) {
-        clearInterval(interval);
-        next_question.click();
-    } else {
-        timer++;
-        time.innerText = timer;
-    }
+    // if (timer === 20) {
+    //     clearInterval(interval);
+    //     next_question.click();
+    // } else {
+    timer--;
+    time.innerText = timer;
+    // }
 }
+
 
 //setInterval(countDown,1000);
 
@@ -80,9 +81,15 @@ let loadData = () => {
     option4.innerText = MCQS[index].choice4;
 
     //    timer start
-    timer = 0;
+    // timer = 0;
 }
 
+let resetGame=()=>{
+    index = 0;
+    timer = 30;
+    interval = 0;
+
+}
 loadData();
 
 //action when 'Continue' Button is clicked
@@ -109,7 +116,8 @@ choice_que.forEach((choices, choiceNo) => {
         if (choiceNo === MCQS[index].answer) {
             correct++;
         } else {
-            correct += 0;
+            timer -= 2
+            // correct += 0;
         }
         //stop Counter
         clearInterval(interval);
@@ -163,4 +171,5 @@ quit.addEventListener("click", () => {
 startAgain.addEventListener("click", () => {
     guide.style.display = "block";
     result.style.display = "none";
+    resetGame()
 });
