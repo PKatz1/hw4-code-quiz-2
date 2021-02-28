@@ -60,13 +60,9 @@ exit.addEventListener("click", () => {
 //Creates Timer For Quiz Timer Section
 
 let countDown = () => {
-    // if (timer === 20) {
-    //     clearInterval(interval);
-    //     next_question.click();
-    // } else {
+
     timer--;
     time.innerText = timer;
-    // }
 }
 
 
@@ -117,7 +113,7 @@ choice_que.forEach((choices, choiceNo) => {
             correct++;
         } else {
             timer -= 2
-            // correct += 0;
+    
         }
         //stop Counter
         clearInterval(interval);
